@@ -10,9 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/api/v1/students")
 public class StudentController {
 
-  @GetMapping  
-  public List<String> getAllStudents() {
-    return List.of("Alaa", "Ali", "Sara");
+  
+  // Field injection
+  // private StudentService service;
+  
+  // Constructor injection
+  private final StudentService service;
+  public StudentController(StudentService studentService) {
+    this.service = studentService;
+  }
+
+  @GetMapping
+  public List<Student> getAllStudents() {
+    return service.getAllStudents();
   }
 
 }
