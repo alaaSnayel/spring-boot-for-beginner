@@ -1,6 +1,7 @@
 package com.alaa.springdemo.student;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -72,7 +73,7 @@ public class Student {
   }
 
   public int getAge() {
-    return age;
+    return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
   }
 
   public void setAge(int age) {
